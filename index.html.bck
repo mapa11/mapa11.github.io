@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Jovenes fuera del Ciclo Básico</title>
+        <!-- Bootstrap core CSS -->
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="style.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/froala_blocks.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="src/plugins/L.Control.Sidebar.css">
+        <link rel="stylesheet" href="src/plugins/easy-button.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/filter.css">
+        <link rel="stylesheet" href="src/jquery-ui.min.css">
+        <link rel="stylesheet" href="css/nouislider.min.css">
+        <link rel="stylesheet" href="css/MarkerCluster.css">
+        <link rel="stylesheet" href="css/MarkerCluster.Default.css">
+        <style>
+            #map {
+                    height: 700px;
+                 }
+            
+            #side_panel {
+                    height: 500px;
+                }
+            .center {
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+                    width: 50%;
+                    }
+            .inline {
+                    display:inline-block;
+                    margin-right:5px;
+                    margin-left:7px;
+                    }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+</div>
+        <img src="assets/img/logo.jpg" class="center">
+        <header class="bg-dark h-100" data-pg-dyn-id="did_13">
+            <div class="container text-center">
+                <nav class="navbar">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <h2>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Prevalencia de jóvenes que no están en el Ciclo Básico (2015-2020) </h2>
+                    <a class="ml-auto mr-auto" href="https://www.froala.com"> </a>
+                </nav>
+            </div>
+        </header>
+        <div class="row">
+            <div class="col-md-3">
+                <h2 style="color:darkblue;text-align:center;">Departamento</h2> 
+                <p style="color:black;text-align:center; padding:10px;">Seleccione el departamento para desplegar la información a nivel municipal</p>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        
+                        <div id="menup"></div>
+                        <div id="caspa"></div>  
+                    </div>
+                    
+                </div>
+            </div>
+            <div id="map" class="col-md-9">
+
+                <div id="sidebar">
+                <h3></h3> 
+               
+                    
+                </div>
+                
+            </div>
+        </div>
+        <!-- Bootstrap core JavaScript
+    ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <div class="row">
+         
+            <div id="tables" class="col-md-12 ml-3 mr-5 pl-3 pr-4 pr-5">
+                <h3>Datos</h3>
+                <table id="tbody_Municipio" class="table"> 
+                    <thead> 
+                        <tr> 
+                            <th>Departamento</th> 
+                            <th>Mayores 18</th> 
+                            <th>18 o menos</th> 
+                            <th>Hombres</th>
+                            <th>Mujeres</th>
+                            <th>Indígena</th>
+                            <th>Ladino</th>
+                            <th>Total</th> 
+                        </tr>                         
+                    </thead>                     
+                    <tbody> 
+                        <tr> 
+                            <td>Nacional</td>
+                            <td>73,162</td> 
+                            <td>451,419</td> 
+                            <td>260,752</td> 
+                            <td>263,829</td> 
+                            <td>282,585</td>
+                            <td>241,996</td>
+                            <td>524,581</td>
+                        </tr>                         
+                    </tbody>                     
+                </table>                 
+                <p></p> 
+            </div>
+        </div>
+        <footer class="fdb-block footer-small bg-dark">
+            <div class="container">
+                <div class="row text-center align-items-center">
+                    <div class="col">
+                        <ul class="nav justify-content-center">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="http://odk.exitoescolar.org/ODA/index.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="http://odk.exitoescolar.org/indiceMapas/">Mapas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="http://odas.exitoescolar.org/oportunidades/">ODAS</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="http://odk.exitoescolar.org/infraestructuraMINEDUC/">Infraestructura</a>
+                            </li>
+                            <li class="nav-item">
+</li>
+                        </ul>
+                        <p class="h5 mt-5">&copy; 2020&nbsp;</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/popper.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/leaflet.markercluster.js"></script>
+        <script src="src/plugins/L.Control.Sidebar.js"></script>
+        <script src="src/plugins/easy-button.js"></script>
+        <script src="src/jquery-3.4.1.min.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/tailDT.js"></script>
+        <script src="js/nouislider.min.js"></script>
+        <script src="js/wNumb.js"></script>
+        <script src="data/JovenesSinBasico_1.js"></script>
+        <script src="data/Hombres_1.js"></script>
+        <script src="data/Mujeres_2.js"></script>
+        <script src="data/NoIndigenas_3.js"></script>
+        <script src="data/Indigenas_4.js"></script>
+        <script src="data/JovenesFueradeBsico_5.js"></script>
+        <script src="data/Capaunida_1.js"></script>
+        
+        
+        <script>
+        var ctlEasybutton;
+        var ctlSidebar;
+
+var highlightLayer;
+        function highlightFeature(e) {
+            highlightLayer = e.target;
+            highlightLayer.openPopup();
+        }
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:24, minZoom:6
+        }).fitBounds([[13.636621334658514,-94.64587200020121],[17.919560758106606,-85.81589769287793]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        
+        
+        ctlSidebar = L.control.sidebar('sidebar').addTo(map);
+        ctlEasybutton = L.easyButton('fas fa-info-circle', function(){
+                   ctlSidebar.toggle(); 
+                }).addTo(map);
+            
+            
+            
+        map.createPane('pane_OpenStreetMap_0');
+        map.getPane('pane_OpenStreetMap_0').style.zIndex = 400;
+        var layer_OpenStreetMap_0 = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            pane: 'pane_OpenStreetMap_0',
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 6,
+            maxZoom: 24,
+            minNativeZoom: 0,
+            maxNativeZoom: 19
+        });
+        layer_OpenStreetMap_0;
+        map.addLayer(layer_OpenStreetMap_0);
+
+        function pop_JovenesSinBasico_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Cantidad'] !== null ? autolinker.link(feature.properties['Cantidad'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 100});
+        }
+
+        function style_JovenesSinBasico_1_0() {
+            return {
+                pane: 'pane_JovenesSinBasico_1',
+                radius: 8.0,
+                opacity: 1,
+                color: 'rgba(128,17,25,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(219,30,42,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_JovenesSinBasico_1');
+        map.getPane('pane_JovenesSinBasico_1').style.zIndex = 401;
+        map.getPane('pane_JovenesSinBasico_1').style['mix-blend-mode'] = 'normal';
+        
+            var layer_JovenesSinBasico_1 = new L.geoJson(json_JovenesSinBasico_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_JovenesSinBasico_1',
+            layerName: 'layer_JovenesSinBasico_1',
+            pane: 'pane_JovenesSinBasico_1',
+            onEachFeature: pop_JovenesSinBasico_1,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_JovenesSinBasico_1_0(feature));
+            },
+        });
+        var cluster_JovenesSinBasico_1 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+            spiderfyDistanceMultiplier: 2});
+        cluster_JovenesSinBasico_1.addLayer(layer_JovenesSinBasico_1);
+
+        bounds_group.addLayer(layer_JovenesSinBasico_1);
+       // cluster_JovenesSinBasico_1.addTo(map); 
+
+
+
+
+        function pop_Hombres_1(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Municipio'] !== null ? autolinker.link(feature.properties['Municipio'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Departamento'] !== null ? autolinker.link(feature.properties['Departamento'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Hombres'] !== null ? autolinker.link(feature.properties['Hombres'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Hombres_1_0(feature) {
+            if (feature.properties['Hombres'] >= 0.000000 && feature.properties['Hombres'] <= 751.000000 ) {
+                return {
+                pane: 'pane_Hombres_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(247,251,255,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Hombres'] >= 751.000000 && feature.properties['Hombres'] <= 1601.000000 ) {
+                return {
+                pane: 'pane_Hombres_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(216,231,245,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Hombres'] >= 1601.000000 && feature.properties['Hombres'] <= 2736.000000 ) {
+                return {
+                pane: 'pane_Hombres_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(176,210,232,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Hombres'] >= 2736.000000 && feature.properties['Hombres'] <= 4068.000000 ) {
+                return {
+                pane: 'pane_Hombres_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(115,179,216,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Hombres'] >= 4068.000000 && feature.properties['Hombres'] <= 5681.000000 ) {
+                return {
+                pane: 'pane_Hombres_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(62,142,196,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Hombres'] >= 5681.000000 && feature.properties['Hombres'] <= 9135.000000 ) {
+                return {
+                pane: 'pane_Hombres_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(21,99,170,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Hombres'] >= 9135.000000 && feature.properties['Hombres'] <= 19088.000000 ) {
+                return {
+                pane: 'pane_Hombres_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(8,48,107,1.0)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_Hombres_1');
+        map.getPane('pane_Hombres_1').style.zIndex = 401;
+        map.getPane('pane_Hombres_1').style['mix-blend-mode'] = 'normal';
+        var layer_Hombres_1 = new L.geoJson(json_Hombres_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Hombres_1',
+            layerName: 'layer_Hombres_1',
+            pane: 'pane_Hombres_1',
+            onEachFeature: pop_Hombres_1,
+            style: style_Hombres_1_0,
+        });
+        bounds_group.addLayer(layer_Hombres_1);
+       // map.addLayer(layer_Hombres_1);
+        function pop_Mujeres_2(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Municipio'] !== null ? autolinker.link(feature.properties['Municipio'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Departamento'] !== null ? autolinker.link(feature.properties['Departamento'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Mujeres'] !== null ? autolinker.link(feature.properties['Mujeres'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Mujeres_2_0(feature) {
+            if (feature.properties['Mujeres'] >= 0.000000 && feature.properties['Mujeres'] <= 751.000000 ) {
+                return {
+                pane: 'pane_Mujeres_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(237,248,251,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Mujeres'] >= 751.000000 && feature.properties['Mujeres'] <= 1601.000000 ) {
+                return {
+                pane: 'pane_Mujeres_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(199,220,235,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Mujeres'] >= 1601.000000 && feature.properties['Mujeres'] <= 2736.000000 ) {
+                return {
+                pane: 'pane_Mujeres_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(166,187,218,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Mujeres'] >= 2736.000000 && feature.properties['Mujeres'] <= 4068.000000 ) {
+                return {
+                pane: 'pane_Mujeres_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(140,150,198,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Mujeres'] >= 4068.000000 && feature.properties['Mujeres'] <= 5681.000000 ) {
+                return {
+                pane: 'pane_Mujeres_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(137,107,178,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Mujeres'] >= 5681.000000 && feature.properties['Mujeres'] <= 9135.000000 ) {
+                return {
+                pane: 'pane_Mujeres_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(134,62,153,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Mujeres'] >= 9135.000000 && feature.properties['Mujeres'] <= 19088.000000 ) {
+                return {
+                pane: 'pane_Mujeres_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(129,15,124,1.0)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_Mujeres_2');
+        map.getPane('pane_Mujeres_2').style.zIndex = 402;
+        map.getPane('pane_Mujeres_2').style['mix-blend-mode'] = 'normal';
+        var layer_Mujeres_2 = new L.geoJson(json_Mujeres_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Mujeres_2',
+            layerName: 'layer_Mujeres_2',
+            pane: 'pane_Mujeres_2',
+            onEachFeature: pop_Mujeres_2,
+            style: style_Mujeres_2_0,
+        });
+        bounds_group.addLayer(layer_Mujeres_2);
+      //  map.addLayer(layer_Mujeres_2);
+        function pop_NoIndigenas_3(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Municipio'] !== null ? autolinker.link(feature.properties['Municipio'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Departamento'] !== null ? autolinker.link(feature.properties['Departamento'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Indigena'] !== null ? autolinker.link(feature.properties['Indigena'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Ladino'] !== null ? autolinker.link(feature.properties['Ladino'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_NoIndigenas_3_0(feature) {
+            if (feature.properties['Ladino'] >= 0.000000 && feature.properties['Ladino'] <= 751.000000 ) {
+                return {
+                pane: 'pane_NoIndigenas_3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(246,239,247,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Ladino'] >= 751.000000 && feature.properties['Ladino'] <= 1601.000000 ) {
+                return {
+                pane: 'pane_NoIndigenas_3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(208,214,233,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Ladino'] >= 1601.000000 && feature.properties['Ladino'] <= 2736.000000 ) {
+                return {
+                pane: 'pane_NoIndigenas_3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(160,191,219,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Ladino'] >= 2736.000000 && feature.properties['Ladino'] <= 4068.000000 ) {
+                return {
+                pane: 'pane_NoIndigenas_3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(103,169,207,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Ladino'] >= 4068.000000 && feature.properties['Ladino'] <= 5681.000000 ) {
+                return {
+                pane: 'pane_NoIndigenas_3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(53,152,171,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Ladino'] >= 5681.000000 && feature.properties['Ladino'] <= 9135.000000 ) {
+                return {
+                pane: 'pane_NoIndigenas_3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(19,132,132,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Ladino'] >= 9135.000000 && feature.properties['Ladino'] <= 19088.000000 ) {
+                return {
+                pane: 'pane_NoIndigenas_3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(1,108,89,1.0)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_NoIndigenas_3');
+        map.getPane('pane_NoIndigenas_3').style.zIndex = 403;
+        map.getPane('pane_NoIndigenas_3').style['mix-blend-mode'] = 'normal';
+        var layer_NoIndigenas_3 = new L.geoJson(json_NoIndigenas_3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_NoIndigenas_3',
+            layerName: 'layer_NoIndigenas_3',
+            pane: 'pane_NoIndigenas_3',
+            onEachFeature: pop_NoIndigenas_3,
+            style: style_NoIndigenas_3_0,
+        });
+        bounds_group.addLayer(layer_NoIndigenas_3);
+      //  map.addLayer(layer_NoIndigenas_3);
+        function pop_Indigenas_4(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Municipio'] !== null ? autolinker.link(feature.properties['Municipio'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Departamento'] !== null ? autolinker.link(feature.properties['Departamento'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Indigena'] !== null ? autolinker.link(feature.properties['Indigena'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Indigenas_4_0(feature) {
+            if (feature.properties['Indigena'] >= 0.000000 && feature.properties['Indigena'] <= 751.000000 ) {
+                return {
+                pane: 'pane_Indigenas_4',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(247,252,245,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Indigena'] >= 751.000000 && feature.properties['Indigena'] <= 1601.000000 ) {
+                return {
+                pane: 'pane_Indigenas_4',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(221,242,215,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Indigena'] >= 1601.000000 && feature.properties['Indigena'] <= 2736.000000 ) {
+                return {
+                pane: 'pane_Indigenas_4',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(178,224,171,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Indigena'] >= 2736.000000 && feature.properties['Indigena'] <= 4068.000000 ) {
+                return {
+                pane: 'pane_Indigenas_4',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,200,124,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Indigena'] >= 4068.000000 && feature.properties['Indigena'] <= 5681.000000 ) {
+                return {
+                pane: 'pane_Indigenas_4',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(61,167,90,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Indigena'] >= 5681.000000 && feature.properties['Indigena'] <= 9135.000000 ) {
+                return {
+                pane: 'pane_Indigenas_4',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(19,126,58,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Indigena'] >= 9135.000000 && feature.properties['Indigena'] <= 19088.000000 ) {
+                return {
+                pane: 'pane_Indigenas_4',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,68,27,1.0)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_Indigenas_4');
+        map.getPane('pane_Indigenas_4').style.zIndex = 404;
+        map.getPane('pane_Indigenas_4').style['mix-blend-mode'] = 'normal';
+        var layer_Indigenas_4 = new L.geoJson(json_Indigenas_4, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Indigenas_4',
+            layerName: 'layer_Indigenas_4',
+            pane: 'pane_Indigenas_4',
+            onEachFeature: pop_Indigenas_4,
+            style: style_Indigenas_4_0,
+        });
+        bounds_group.addLayer(layer_Indigenas_4);
+        function pop_JovenesFueradeBsico_5(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Municipio</th>\
+                        <td>' + (feature.properties['Municipio'] !== null ? autolinker.link(feature.properties['Municipio'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Departamentoto</th>\
+                        <td>' + (feature.properties['Departamento'] !== null ? autolinker.link(feature.properties['Departamento'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Mayores 18 Años</th>\
+                        <td>' + (feature.properties['Mayores_18'] !== null ? autolinker.link(feature.properties['Mayores_18'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">18 años o menos</th>\
+                        <td>' + (feature.properties['Menor18'] !== null ? autolinker.link(feature.properties['Menor18'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Hombres</th>\
+                        <td>' + (feature.properties['Hombres'] !== null ? autolinker.link(feature.properties['Hombres'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Mujeres</th>\
+                        <td>' + (feature.properties['Mujeres'] !== null ? autolinker.link(feature.properties['Mujeres'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Indigena</th>\
+                        <td>' + (feature.properties['Indigena'] !== null ? autolinker.link(feature.properties['Indigena'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">No Indígena</th>\
+                        <td>' + (feature.properties['Ladino'] !== null ? autolinker.link(feature.properties['Ladino'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Total</th>\
+                        <td>' + (feature.properties['Total'] !== null ? autolinker.link(feature.properties['Total'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_JovenesFueradeBsico_5_0(feature) {
+            if (feature.properties['Total'] >= 0.000000 && feature.properties['Total'] <= 751.000000 ) {
+                return {
+                pane: 'pane_JovenesFueradeBsico_5',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(254,224,210,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Total'] >= 751.000000 && feature.properties['Total'] <= 1601.000000 ) {
+                return {
+                pane: 'pane_JovenesFueradeBsico_5',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,187,175,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Total'] >= 1601.000000 && feature.properties['Total'] <= 2736.000000 ) {
+                return {
+                pane: 'pane_JovenesFueradeBsico_5',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,149,140,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Total'] >= 2736.000000 && feature.properties['Total'] <= 4068.000000 ) {
+                return {
+                pane: 'pane_JovenesFueradeBsico_5',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,112,105,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Total'] >= 4068.000000 && feature.properties['Total'] <= 5681.000000 ) {
+                return {
+                pane: 'pane_JovenesFueradeBsico_5',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,74,70,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Total'] >= 5681.000000 && feature.properties['Total'] <= 9135.000000 ) {
+                return {
+                pane: 'pane_JovenesFueradeBsico_5',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,37,35,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Total'] >= 9135.000000 && feature.properties['Total'] <= 19088.000000 ) {
+                return {
+                pane: 'pane_JovenesFueradeBsico_5',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,0,0,1.0)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_JovenesFueradeBsico_5');
+        map.getPane('pane_JovenesFueradeBsico_5').style.zIndex = 405;
+        map.getPane('pane_JovenesFueradeBsico_5').style['mix-blend-mode'] = 'normal';
+        var layer_JovenesFueradeBsico_5 = new L.geoJson(json_JovenesFueradeBsico_5, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_JovenesFueradeBsico_5',
+            layerName: 'layer_JovenesFueradeBsico_5',
+            pane: 'pane_JovenesFueradeBsico_5',
+            onEachFeature: pop_JovenesFueradeBsico_5,
+            style: style_JovenesFueradeBsico_5_0,
+        });
+        bounds_group.addLayer(layer_JovenesFueradeBsico_5);
+        map.addLayer(layer_JovenesFueradeBsico_5);
+         
+        
+        
+        var baseMaps = {};
+
+        L.Control.Layers.include({
+  getOverlays: function() {
+    // create hash to hold all layers
+    var control, layers;
+    layers = {};
+    control = this;
+      
+
+          // loop thru all layers in control
+    control._layers.forEach(function(obj) {
+      var layerName;
+
+      // check if layer is an overlay
+      if (obj.overlay) {
+        // get name of overlay
+        layerName = obj.name;
+        // store whether it's present on the map or not
+        return layers[layerName] = control._map.hasLayer(obj.layer);
+      }
+    });
+
+    return layers;
+  }
+});
+
+
+        var control = new L.control.layers(baseMaps,{'Jovenes Fuera de Básico<br /><table><tr><td style="text-align: center;"><img src="legend/JovenesFueradeBsico_5_07510.png" /></td><td>0 - 751</td></tr><tr><td style="text-align: center;"><img src="legend/JovenesFueradeBsico_5_75116011.png" /></td><td>751 - 1601</td></tr><tr><td style="text-align: center;"><img src="legend/JovenesFueradeBsico_5_160127362.png" /></td><td>1601 - 2736</td></tr><tr><td style="text-align: center;"><img src="legend/JovenesFueradeBsico_5_273640683.png" /></td><td>2736 - 4068</td></tr><tr><td style="text-align: center;"><img src="legend/JovenesFueradeBsico_5_406856814.png" /></td><td>4068 - 5681</td></tr><tr><td style="text-align: center;"><img src="legend/JovenesFueradeBsico_5_568191355.png" /></td><td>5681 - 9135</td></tr><tr><td style="text-align: center;"><img src="legend/JovenesFueradeBsico_5_9135190886.png" /></td><td>9135 - 19088</td></tr></table>': layer_JovenesFueradeBsico_5,'Indigenas<br /><table><tr><td style="text-align: center;"><img src="legend/Indigenas_4_07510.png" /></td><td>0 - 751</td></tr><tr><td style="text-align: center;"><img src="legend/Indigenas_4_75116011.png" /></td><td>751 - 1601</td></tr><tr><td style="text-align: center;"><img src="legend/Indigenas_4_160127362.png" /></td><td>1601 - 2736</td></tr><tr><td style="text-align: center;"><img src="legend/Indigenas_4_273640683.png" /></td><td>2736 - 4068</td></tr><tr><td style="text-align: center;"><img src="legend/Indigenas_4_406856814.png" /></td><td>4068 - 5681</td></tr><tr><td style="text-align: center;"><img src="legend/Indigenas_4_568191355.png" /></td><td>5681 - 9135</td></tr><tr><td style="text-align: center;"><img src="legend/Indigenas_4_9135190886.png" /></td><td>9135 - 19088</td></tr></table>': layer_Indigenas_4,'No Indigenas<br /><table><tr><td style="text-align: center;"><img src="legend/NoIndigenas_3_07510.png" /></td><td>0 - 751</td></tr><tr><td style="text-align: center;"><img src="legend/NoIndigenas_3_75116011.png" /></td><td>751 - 1601</td></tr><tr><td style="text-align: center;"><img src="legend/NoIndigenas_3_160127362.png" /></td><td>1601 - 2736</td></tr><tr><td style="text-align: center;"><img src="legend/NoIndigenas_3_273640683.png" /></td><td>2736 - 4068</td></tr><tr><td style="text-align: center;"><img src="legend/NoIndigenas_3_406856814.png" /></td><td>4068 - 5681</td></tr><tr><td style="text-align: center;"><img src="legend/NoIndigenas_3_568191355.png" /></td><td>5681 - 9135</td></tr><tr><td style="text-align: center;"><img src="legend/NoIndigenas_3_9135190886.png" /></td><td>9135 - 19088</td></tr></table>': layer_NoIndigenas_3,'Mujeres<br /><table><tr><td style="text-align: center;"><img src="legend/Mujeres_2_07510.png" /></td><td>0 - 751</td></tr><tr><td style="text-align: center;"><img src="legend/Mujeres_2_75116011.png" /></td><td>751 - 1601</td></tr><tr><td style="text-align: center;"><img src="legend/Mujeres_2_160127362.png" /></td><td>1601 - 2736</td></tr><tr><td style="text-align: center;"><img src="legend/Mujeres_2_273640683.png" /></td><td>2736 - 4068</td></tr><tr><td style="text-align: center;"><img src="legend/Mujeres_2_406856814.png" /></td><td>4068 - 5681</td></tr><tr><td style="text-align: center;"><img src="legend/Mujeres_2_568191355.png" /></td><td>5681 - 9135</td></tr><tr><td style="text-align: center;"><img src="legend/Mujeres_2_9135190886.png" /></td><td>9135 - 19088</td></tr></table>': layer_Mujeres_2,'Hombres<br /><table><tr><td style="text-align: center;"><img src="legend/Hombres_1_07510.png" /></td><td>0 - 751</td></tr><tr><td style="text-align: center;"><img src="legend/Hombres_1_75116011.png" /></td><td>751 - 1601</td></tr><tr><td style="text-align: center;"><img src="legend/Hombres_1_160127362.png" /></td><td>1601 - 2736</td></tr><tr><td style="text-align: center;"><img src="legend/Hombres_1_273640683.png" /></td><td>2736 - 4068</td></tr><tr><td style="text-align: center;"><img src="legend/Hombres_1_406856814.png" /></td><td>4068 - 5681</td></tr><tr><td style="text-align: center;"><img src="legend/Hombres_1_568191355.png" /></td><td>5681 - 9135</td></tr><tr><td style="text-align: center;"><img src="legend/Hombres_1_9135190886.png" /></td><td>9135 - 19088</td></tr></table>': layer_Hombres_1, '<img src="legend/JovenesSinBasico_1.png" /> Jovenes Sin Basico a nivel comunidad': cluster_JovenesSinBasico_1,"OpenStreetMap": layer_OpenStreetMap_0,},{collapsed:false}).addTo(map);
+        setBounds();
+
+        
+        
+
+        var tablon = document.getElementById("tbody_Municipio");
+        for (var i = 0; i < json_Capaunida_1.features.length; i++) {
+
+            var properties = json_Capaunida_1.features[i].properties;
+    
+            
+            var row = tablon.insertRow(-1);
+
+function formatNumber(num) {
+  if(isNaN(num)){
+    return   num.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+  }
+  else{
+     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,'); 
+  }
+}
+
+        
+      
+        
+
+
+
+            
+            row.insertCell(0).innerHTML = properties.Departam_1;
+            row.insertCell(1).innerHTML = formatNumber(properties.Mayores_18);
+            row.insertCell(2).innerHTML = formatNumber(properties.Menor18);
+            row.insertCell(3).innerHTML = formatNumber(properties.Hombres);
+            row.insertCell(4).innerHTML = formatNumber(properties.Mujeres);
+            row.insertCell(5).innerHTML = formatNumber(properties.Indigena);
+            row.insertCell(6).innerHTML = formatNumber(properties.Ladino);
+            row.insertCell(7).innerHTML = formatNumber(properties.Total);
+
+
+        }
+
+        
+        $(document).ready(function(){
+              $('#sidebar').html( "<h3 style='text-align:center';>Información</h3> <p> En este mapa se encuentra información desagregada de los jóvenes que deberían de estar en el Ciclo Básico, debido a que cursaron sexto primaria en el período 2015-2019 o algún grado del Ciclo Básico, pero que abandonaron. Para poder visualizar la información de la mejor forma debe interactuar con los controles de la página, los cuales se muestran a continuación:</p> <h4>Control de capas</h4> <p> Del lado derecho del mapa se encuentra el panel de capas, en el cual puede seleccionar la capa que desea visualizar. Note que la capa activa es la que se visualiza. Si bien se pueden seleccionar varias capas, solo existe una única capa activa y es la capa seleccionada que se encuentra más arriba del resto. Por defecto el mapa al cargar establece a la capa, Jóvenes fuera de básico, como la capa activa. Si desea visualizar otra capa debe deseleccionarla y seleccionar la capa que desea visualizar y así sucesivamente. La selección de las capas afecta la capa que se muestra en el mapa y los datos que se muestran en la tabla.</p> <p style='color:blue;'>NOTA: La capa Jóvenes Sin Básico a nivel de comunidad no se puede filtrar, por lo que no debe ser la capa activa al momento de usar el panel de filtros.</p> <h4>Panel de filtros</h4> <p>Del lado izquierdo se encuentra el panel de filtros, donde se pueden filtrar por departamento, a fin de desplegar la información a nivel municipal para el departamento seleccionado. La selección del filtro afecta lo que se despliega en el mapa y lo que se despliega en la tabla.</p> <p style='color:blue;'> NOTA: Una vez utilizado los filtros, para cargar nuevamente la tabla a nivel nacional debe refrescar la página.</p> " );
+            });
+        
+            
+            
+        var mapDiv = document.getElementById('caspa');
+        var row = document.createElement('div');
+        row.className="row";
+        row.id="all";
+        row.style.height = "80%";
+        var col1 = document.createElement('div');
+        col1.className="col9";
+        col1.id = "mapWindow";
+        col1.style.height = "99%";
+        col1.style.width = "60%";
+        col1.style.display = "inline-block";
+        var col2 = document.createElement('div');
+        col2.className="col3";
+        col2.id = "menu";
+        col2.style.display = "inline-block";
+        mapDiv.parentNode.insertBefore(row, mapDiv);
+        document.getElementById("all").appendChild(col1);
+        document.getElementById("all").appendChild(col2);
+        col1.appendChild(mapDiv)
+        var Filters = {"Departamento": "str"};
+        
+        var mydata = [];
+        var toogle = 1;
+
+        function activa(){
+          map.eachLayer
+          function getKeyByValue(object, value) {
+            return Object.keys(object).find(key => object[key] === value);
+          }
+          mydata=[];
+
+          var di = control.getOverlays();
+          var activelayers = getKeyByValue(di,true);
+          var campos = activelayers.split("<");
+          var capa = campos[0];
+
+
+          var cap="json_".concat(capa); //crea la capa json_Jovenes Fuera de Básico
+
+          
+
+        mydata.push(capas[cap]);
+       
+
+        actualizarTabla();
+            return cap;
+            
+}
+        /*ESTO SIRVE PARA LINKEAR CADA NOMBRE CON SU VARIABLE*/
+        var capas = {
+                        "json_Jovenes Fuera de Básico":json_JovenesFueradeBsico_5,
+                        "json_Indigenas":json_Indigenas_4,
+                        "json_No Indigenas":json_NoIndigenas_3,
+                        "json_Mujeres":json_Mujeres_2,
+                        "json_Hombres":json_Hombres_1
+
+                    };
+            
+            
+        function filterFunc() {
+          map.eachLayer(function(lyr){
+          if ("options" in lyr && "dataVar" in lyr["options"]){
+            features = this[lyr["options"]["dataVar"]].features.slice(0);
+            try{
+              for (key in Filters){
+                if (Filters[key] == "str" || Filters[key] == "bool"){
+                  var selection = [];
+                  var options = document.getElementById("sel_" + key).options
+                  for (var i=0; i < options.length; i++) {
+                    if (options[i].selected) selection.push(options[i].value);
+                  }
+                    try{
+                      if (key in features[0].properties){
+                        for (i = features.length - 1;
+                          i >= 0; --i){
+                          if (selection.indexOf(
+                          features[i].properties[key])<0
+                          && selection.length>0) {
+                          features.splice(i,1);                        
+                          
+                          }
+                        }
+                      }
+                    } catch(err){
+                  }
+                }
+                if (Filters[key] == "int"){
+                  sliderVals =  document.getElementById(
+                    "div_" + key).noUiSlider.get();
+                  try{
+                    if (key in features[0].properties){
+                    for (i = features.length - 1; i >= 0; --i){
+                      if (parseInt(features[i].properties[key])
+                          < sliderVals[0]
+                          || parseInt(features[i].properties[key])
+                          > sliderVals[1]){
+                            features.splice(i,1);
+                          }
+                        }
+                      }
+                    } catch(err){
+                    }
+                  }
+                if (Filters[key] == "real"){
+                  sliderVals =  document.getElementById(
+                    "div_" + key).noUiSlider.get();
+                  try{
+                    if (key in features[0].properties){
+                    for (i = features.length - 1; i >= 0; --i){
+                      if (features[i].properties[key]
+                          < sliderVals[0]
+                          || features[i].properties[key]
+                          > sliderVals[1]){
+                            features.splice(i,1);
+                          }
+                        }
+                      }
+                    } catch(err){
+                    }
+                  }
+                if (Filters[key] == "date"
+                  || Filters[key] == "datetime"
+                  || Filters[key] == "time"){
+                  try{
+                    if (key in features[0].properties){
+                      HTMLkey = key.replace(/[&\/\\#,+()$~%.'":*?<>{} ]/g, '');
+                      startdate = document.getElementById("dat_" +
+                        HTMLkey + "_date1").value.replace(" ", "T");
+                      enddate = document.getElementById("dat_" +
+                        HTMLkey + "_date2").value.replace(" ", "T");
+                      for (i = features.length - 1; i >= 0; --i){
+                        if (features[i].properties[key] < startdate
+                          || features[i].properties[key] > enddate){
+                          features.splice(i,1);
+                        }
+                      }
+                    }
+                  } catch(err){
+                  }
+                }
+              }
+            } catch(err){
+            }
+          this[lyr["options"]["layerName"]].clearLayers();
+          this[lyr["options"]["layerName"]].addData(features);
+          var bounds = this[lyr["options"]["layerName"]].getBounds();
+          map.fitBounds(bounds);
+          }
+          })
+        }
+           var div_Departamento = document.getElementById("menup")
+            
+            // document.getElementById("menu").appendChild(
+             //   document.createElement("div"));
+            //var div_Departamento = document.createElement('div');
+            //div_Departamento.id = "div_Departamento";
+            //div_Departamento.className= "filterselect";
+            //document.getElementById("menu").appendChild(div_Departamento);
+            sel_Departamento = document.createElement('select');
+            sel_Departamento.multiple = true;
+            //sel_Departamento.size = 10;
+            sel_Departamento.id = "sel_Departamento";
+            sel_Departamento.className ="custom-selecto"
+            var Departamento_options_str = "<option value='' unselected></option>";
+            sel_Departamento.onchange = function(){
+                activa(); 
+                filterFunc();
+                mostrarTabla();
+            };
+            Departamento_options_str  += '<option value="Alta Verapaz">Alta Verapaz</option>';
+            Departamento_options_str  += '<option value="Baja Verapaz">Baja Verapaz</option>';
+            Departamento_options_str  += '<option value="Chimaltenango">Chimaltenango</option>';
+            Departamento_options_str  += '<option value="Chiquimula">Chiquimula</option>';
+            Departamento_options_str  += '<option value="El Progreso">El Progreso</option>';
+            Departamento_options_str  += '<option value="Escuintla">Escuintla</option>';
+            Departamento_options_str  += '<option value="Guatemala">Guatemala</option>';
+            Departamento_options_str  += '<option value="Huehuetenango">Huehuetenango</option>';
+            Departamento_options_str  += '<option value="Izabal">Izabal</option>';
+            Departamento_options_str  += '<option value="Jalapa">Jalapa</option>';
+            Departamento_options_str  += '<option value="Jutiapa">Jutiapa</option>';
+            Departamento_options_str  += '<option value="Petén">Petén</option>';
+            Departamento_options_str  += '<option value="Quetzaltenango">Quetzaltenango</option>';
+            Departamento_options_str  += '<option value="Quiché">Quiché</option>';
+            Departamento_options_str  += '<option value="Retalhuleu">Retalhuleu</option>';
+            Departamento_options_str  += '<option value="Sacatepéquez">Sacatepéquez</option>';
+            Departamento_options_str  += '<option value="San Marcos">San Marcos</option>';
+            Departamento_options_str  += '<option value="Santa Rosa">Santa Rosa</option>';
+            Departamento_options_str  += '<option value="Sololá">Sololá</option>';
+            Departamento_options_str  += '<option value="Suchitepéquez">Suchitepéquez</option>';
+            Departamento_options_str  += '<option value="Totonicapán">Totonicapán</option>';
+            Departamento_options_str  += '<option value="Zacapa">Zacapa</option>';
+            sel_Departamento.innerHTML = Departamento_options_str;
+            div_Departamento.appendChild(sel_Departamento);
+            var lab_Departamento = document.createElement('div');
+            lab_Departamento.innerHTML = 'Departamento';
+            lab_Departamento.className = 'filterlabel';
+            div_Departamento.appendChild(lab_Departamento);
+            var reset_Departamento = document.createElement('div');
+            reset_Departamento.innerHTML = '<button type="button" class="btn btn-primary inline">Borrar filtros</button>';
+            reset_Departamento.className = 'inline';
+            var cobertura = document.createElement('div');
+            cobertura.innerHTML = '<a href="cobertura.html" class="btn btn-primary inline">Ampliar cobertura</a>';
+            cobertura.className = 'inline';
+
+
+
+            reset_Departamento.onclick = function() {
+                var options = document.getElementById("sel_Departamento").options;
+                for (var i=0; i < options.length; i++) {
+                    options[i].selected = false;
+                }
+                filterFunc();
+                mostrarTabla();
+                activa();
+            };
+
+            /*cobertura.onclick = function(){
+                window.location.href = "http://mapas.exitoescolar.org/mapa/mapa12/";
+            }*/
+
+            div_Departamento.appendChild(reset_Departamento);
+            div_Departamento.appendChild(cobertura);
+            
+
+
+    
+
+        </script>
+
+        <script src="js/tabla.datos.js"></script>
+    </body>
+</html>
